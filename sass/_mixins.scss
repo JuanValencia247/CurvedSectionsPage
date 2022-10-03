@@ -1,0 +1,125 @@
+@use 'variables' as v;
+
+@mixin sectionStats {
+    
+}
+
+@mixin button ($bg-color, $br-color, $color, $width, $height, $center){
+    background-color: $bg-color;
+    border: none;
+    border: 1px solid $br-color;
+    border-radius: 50px;
+    color: $color;
+    width: $width;
+    height: $height;
+    display: block;
+    @if $center == true {
+        margin: 0 auto;
+    }
+}
+
+@mixin button-hover($bg-color) {
+    &:hover{
+        cursor: pointer;
+        background-color: $bg-color;
+        color: white;
+    }
+}
+
+@mixin stats ($logo) {
+    margin-bottom: 98px;
+      &__img {
+        width: 32px;
+      }
+      &__stats {
+        font-size: 4em;
+        margin-bottom: 10px;
+      }
+      &__description {
+        font-size: 0.94em;
+        text-align: center;  
+        color:rgb(177, 177, 177);
+        @content;
+      }
+      @media (min-width: 900px) {
+        &__img {
+          width: 32px;
+        }
+        &__stats {
+          font-size: 6em;
+          // margin-bottom: 30px;
+        }
+        &__description {
+          font-size: 1.5em;
+          width: 100%;
+        }
+      }
+    
+}
+@mixin sections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0px;
+    .article-image {
+      &__img {
+        width: 246px;
+        margin-bottom: 78px;
+      }
+    }
+    .article-description {
+      &__title {
+        font-family: v.$Font-Poppins;
+        font-size: 1.3em;
+        text-align: center;
+        margin-bottom: 12px;
+        color: v.$Very-Dark-Cyan;
+      }
+      &__description {
+        text-align: center;
+        font-size: 0.87em;
+        width: 328px;
+        color: v.$Very-Dark-Cyan;
+        font-weight: 600;
+        
+      }
+    }
+    @media (min-width: 900px) {
+      flex-direction: row;
+      justify-content: space-around;
+      height: 800px;
+      .article-image {
+        &__img {
+          width: 527px;
+        }
+      }
+      .article-description {
+        &__title {
+          font-size: 2.6em;
+          text-align: left;
+        }
+        &__description {
+          text-align: left;
+          font-size: 0.99em;
+          width: 530px;
+        }
+      }
+
+    }
+}
+
+@mixin banner ($url-top, $url-bottom) {
+    background: {
+      image: url($url-top), url($url-bottom);
+      repeat: no-repeat, no-repeat ;
+      position-y: top, bottom;  
+      
+    };
+}
+@mixin banner-desktop ($url-top, $url-bottom) {
+  @media (min-width: 900px) {
+    background: {
+      image: url($url-top), url($url-bottom);
+    };
+  }
+}

@@ -1,0 +1,390 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: white;
+  color: v.$Very-Dark-Cyan;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: v.$Font-Open-Sans;
+}
+// ============ Header =============== //
+.header-container {
+  width: 375px;
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 25px 125px;
+    &__logo {
+      width: 95px;
+      height: 16px;
+    }
+    &__button {
+      @include m.button(white, v.$Light-Pink, v.$Light-Pink, 80px, 25px, false);
+      @include m.button-hover(v.$Light-Pink);
+    }
+  }
+  @media (min-width: 900px) {
+    width: 1440px;
+    .nav-container {
+    margin: 80px auto 250px;
+      width: 1300px;
+      &__logo {
+        width: 240px;
+        height: 38px;
+      }
+      &__button {
+        width: 134px;
+        height: 42px;
+      }
+    }
+  }
+}
+
+// ============ Main =============== //
+.main-container {
+  width: 375px;
+  @media (min-width: 900px) {
+    width: 1440px;
+  }
+  // Section Header
+  .section-container-header {
+    .article-header {
+      &__title {
+        font-family: v.$Font-Poppins;
+        text-align: center;
+        width: 265px;
+        font-size: 1.48em;
+        margin: 0 auto 40px;
+        font-weight: 900px;
+        font-family: v.$Font-Open-Sans;
+        color: v.$Very-Dark-Cyan;
+      }
+      &__description {
+        text-align: center;
+        margin: 0 auto 50px;
+        font-weight: 600;
+        line-height: 20px;
+        font-size: 0.8em;
+        width: 290px;
+        font-family: v.$Font-Open-Sans;
+        color: v.$Very-Dark-Cyan;
+      }
+      &__button {
+        box-shadow: 1px 10px 10px rgb(219, 219, 219);
+        @include m.button(v.$Pink, unset, v.$Very-Pale-Blue, 200px, 40px, true);
+        @include m.button-hover(v.$Light-Pink);
+      }
+      &__img {
+        width: 300px;
+        display: block;
+        margin: 105px auto 0;
+      }
+      @media (min-width: 900px) {
+        &__title {
+          width: 1010px;
+          font-size: 2.98em;
+        }
+        &__description {
+          width: 590px;
+          height: 80px;
+          line-height: 30px;
+          font-size: 1.25em;
+        }
+        &__button {
+          width: 400px;
+          height: 80px;
+          font-size: 1.25em;
+        }
+
+        &__img {
+          width: 1020px;
+          height: 725px;
+        }
+      }
+    }
+  }
+
+  // Section Stats
+  .section-container-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include m.banner("", "../images/bg-section-top-mobile-1.svg");
+    @include m.banner-desktop("", "../images/bg-section-top-desktop-1.svg");
+    .article-communities {
+      @include m.stats(32px);
+    }
+
+    .article-messages {
+      @include m.stats(24px) {
+        width: 69px;
+        margin: auto;
+      }
+    }
+    // Section Stats Desktop
+    @media (min-width: 900px) {
+      flex-direction: row;
+      justify-content: space-around;
+      height: 800px;
+      .article-communities {
+        @include m.stats(50px);
+      }
+
+      .article-messages {
+        @include m.stats(42px) {
+        }
+      }
+    }
+  }
+
+  // Section Grow Together
+  .section-container-grow-together {
+    padding: 150px 0;
+    background-color: v.$Very-Pale-Blue;
+    @include m.sections();
+    @media (min-width: 900px) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  // Section Flowing Conversation
+  .section-container-flowing-conversation {
+    padding: 150px 0;
+    @include m.sections();
+    @include m.banner(
+      "../images/bg-section-bottom-mobile-1.svg",
+      "../images/bg-section-top-mobile-2.svg"
+    );
+    @include m.banner-desktop(
+      "../images/bg-section-bottom-desktop-1.svg",
+      "../images/bg-section-top-desktop-2.svg"
+    );
+    
+  }
+
+  // Section Your Users
+  .section-container-your-users {
+    padding: 150px 0;
+    @include m.sections();
+    background-color: v.$Very-Pale-Blue;
+    @media (min-width: 900px) {
+        flex-direction: row-reverse;
+      }
+  }
+
+  // Section Your Community
+  .section-container-your-community {
+    height: 600px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    @include m.banner(
+      "../images/bg-section-bottom-mobile-2.svg",
+      "../images/bg-footer-top-mobile.svg"
+    );
+    @include m.banner-desktop(
+      "../images/bg-section-bottom-desktop-2.svg",
+      "../images/bg-footer-top-desktop.svg"
+    );
+    &__title {
+      @extend .article-header__title;
+      margin-bottom: 40px;
+    }
+    &__button {
+        box-shadow: 1px 10px 10px rgb(219, 219, 219);
+      @include m.button(v.$Pink, unset, v.$Very-Pale-Blue, 200px, 40px, true);
+      @include m.button-hover(v.$Light-Pink);
+    }
+    @media (min-width: 900px) {
+      height: 800px;
+      &__title {
+        font-size: 2.5em;
+        margin-bottom: 45px;
+      }
+      &__button {
+        width: 400px;
+        height: 80px;
+        font-size: 1.25em;
+      }
+    }
+  }
+}
+// ============ Footer =============== //
+.footer-container {
+  width: 375px;
+  background-color: v.$Very-Dark-Cyan;
+  color: v.$Very-Pale-Blue;
+  padding: 70px 25px 40px;
+  @media (min-width: 900px) {
+    width: 1440px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+  }
+  // Section Contact
+  .section-container-contact {
+    &__img {
+        width: 205px;
+        margin-bottom: 18px;
+    }
+    &__description {
+        font-size: 0.95em;
+        margin-bottom: 30px;
+        line-height: 25px;
+    }
+    // Div Phone
+    &__phone {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 0.95em;
+        margin-bottom: 15px;
+        
+    }
+    &__phone-img {
+        margin-right: 20px;
+    }
+    
+    // Div Email
+    &__email {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 0.95em;
+        margin-bottom: 50px;
+    }
+    &__email-img {
+        margin-right: 20px;
+    }
+    
+    // Div Redes
+    &__redes {
+        width: 110px;
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__redes-social {
+        font-size: 1.7em;
+    }
+    @media (min-width: 900px) {
+        &__img {
+            width: 290px;
+        }
+        &__description {
+            width: 370px;
+            font-size: 1.1em;
+            line-height: 28px;
+        }
+        &__phone{
+            font-size: 1.2em;
+        }
+        &__phone-img {
+            height: 20px;
+            margin-right: 20px;
+        }
+        &__email{
+            font-size: 1.2em;
+        }
+        &__email-img {
+            height: 20px;
+            margin-right: 20px;
+        }
+        &__redes {
+            width: 150px;
+            height: 35px;
+        }
+        &__redes-social {
+            font-size: 35px;
+        }
+    }
+  }
+
+  // Section Subscription
+  .section-container-subscription {
+    margin-bottom: 100px;
+    @media (min-width: 900px) {
+        display: flex;
+        width: 600px;
+        height: 240px;
+      }
+    .article-subscription {
+      &__title {
+        text-transform: uppercase;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+      &__description {
+        font-size: 0.95em;
+        margin-bottom: 28px;
+        line-height: 25px;
+      }
+      // Form
+      &__form {
+      }
+      &__form-input {
+        width: 100%;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        margin-bottom: 15px;
+        outline: none;
+        font-size: 1.2em;
+        padding-left: 20px;
+      }
+      &__form-error{
+        color: v.$Light-Red;
+        margin-top: -5px;
+      }
+      @media (min-width: 900px) {
+        &__title {
+            font-size: 1.8em;
+          }
+          &__description {
+            font-size: 1.1em;
+            line-height: 28px;
+            margin-bottom: 42px;
+          }
+          &__form-input {
+            width: 90%;
+          }
+      }
+    }
+    .article-button {
+        display: flex;
+        justify-content: flex-end;
+        @media (min-width: 900px) {
+            align-items: flex-end;
+        }
+      &__subscribe {
+        @include m.button(v.$Pink, unset, v.$Very-Pale-Blue, 160px, 50px, false);
+        @include m.button-hover(v.$Light-Pink);
+        border-radius: 8px;
+        font-weight: 600;
+      }
+      @media (min-width: 900px) {
+        margin-bottom: 6px;
+        padding-left: 20px;
+      }
+    }
+  }
+}
+////////////////////////////////////////////////
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
